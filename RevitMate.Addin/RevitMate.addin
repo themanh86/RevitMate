@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>RevitMate</Name>
+    <Assembly>RevitMate\RevitMate.Addin.dll</Assembly>
+    <AddInId>7C2E8A0D-3F5B-4A91-9D6C-1E3F8B4C2D75</AddInId>
+    <FullClassName>RevitMate.Addin.Application</FullClassName>
+    <VendorId>RVMT</VendorId>
+    <VendorDescription>RevitMate</VendorDescription>
+  </AddIn>
+</RevitAddIns>

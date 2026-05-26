@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <!-- Window / panel titles -->
+  <data name="AppName" xml:space="preserve">
+    <value>RevitMate</value>
+  </data>
+  <data name="PanelTitle" xml:space="preserve">
+    <value>RevitMate Assistant</value>
+  </data>
+  <data name="SettingsTitle" xml:space="preserve">
+    <value>RevitMate Settings</value>
+  </data>
+  <!-- Ribbon -->
+  <data name="RibbonTabName" xml:space="preserve">
+    <value>RevitMate</value>
+  </data>
+  <data name="RibbonPanelName" xml:space="preserve">
+    <value>AI Tools</value>
+  </data>
+  <data name="OpenButtonText" xml:space="preserve">
+    <value>Open RevitMate</value>
+  </data>
+  <data name="SettingsButtonText" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <!-- Chat UI -->
+  <data name="InputPlaceholder" xml:space="preserve">
+    <value>Type a command or question...</value>
+  </data>
+  <data name="SendButton" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="NewConversationButton" xml:space="preserve">
+    <value>New conversation</value>
+  </data>
+  <data name="CopyButton" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="ExecutingPrefix" xml:space="preserve">
+    <value>Executing:</value>
+  </data>
+  <data name="TokenUsageLabel" xml:space="preserve">
+    <value>Tokens used:</value>
+  </data>
+  <!-- Suggestions -->
+  <data name="Suggestion1" xml:space="preserve">
+    <value>Create a downlight grid in the selected room</value>
+  </data>
+  <data name="Suggestion2" xml:space="preserve">
+    <value>Check circuit DB-L1 load</value>
+  </data>
+  <data name="Suggestion3" xml:space="preserve">
+    <value>Generate lighting schedule for this level</value>
+  </data>
+  <!-- Settings dialog -->
+  <data name="ApiKeyLabel" xml:space="preserve">
+    <value>Claude API Key</value>
+  </data>
+  <data name="ModelLabel" xml:space="preserve">
+    <value>Model</value>
+  </data>
+  <data name="MaxTokensLabel" xml:space="preserve">
+    <value>Max tokens per response</value>
+  </data>
+  <data name="ResponseLanguageLabel" xml:space="preserve">
+    <value>AI response language</value>
+  </data>
+  <data name="LanguageAuto" xml:space="preserve">
+    <value>Auto-detect from input</value>
+  </data>
+  <data name="LanguageEnglish" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="LanguageJapanese" xml:space="preserve">
+    <value>Japanese</value>
+  </data>
+  <data name="SaveButton" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="CancelButton" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <!-- Error messages -->
+  <data name="ErrorInvalidApiKey" xml:space="preserve">
+    <value>Invalid API key. Please update it in Settings.</value>
+  </data>
+  <data name="ErrorNoActiveDocument" xml:space="preserve">
+    <value>Please open a Revit project first.</value>
+  </data>
+  <data name="ErrorNetworkFailure" xml:space="preserve">
+    <value>Network error. Check your internet connection.</value>
+  </data>
+  <data name="ErrorGeneric" xml:space="preserve">
+    <value>An error occurred: {0}</value>
+  </data>
+  <!-- Status -->
+  <data name="StatusReady" xml:space="preserve">
+    <value>Ready</value>
+  </data>
+  <data name="StatusThinking" xml:space="preserve">
+    <value>Thinking...</value>
+  </data>
+  <data name="StatusExecuting" xml:space="preserve">
+    <value>Executing tool...</value>
+  </data>
+  <!-- Selection snapshot -->
+  <data name="SelectionStatus" xml:space="preserve">
+    <value>{0} element(s) selected</value>
+  </data>
+</root>

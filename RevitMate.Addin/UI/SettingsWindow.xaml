@@ -1,0 +1,51 @@
+<Window x:Class="RevitMate.Addin.UI.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:res="clr-namespace:RevitMate.Resources;assembly=RevitMate.Resources"
+        Title="{x:Static res:Strings.SettingsTitle}"
+        Width="460"
+        Height="380"
+        FontFamily="Segoe UI"
+        FontSize="13"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        Background="#F7F7F8">
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0">
+            <TextBlock Text="{x:Static res:Strings.ApiKeyLabel}" Margin="0,0,0,4"/>
+            <PasswordBox x:Name="ApiKeyBox" Padding="6" Margin="0,0,0,12"/>
+
+            <TextBlock Text="{x:Static res:Strings.ModelLabel}" Margin="0,0,0,4"/>
+            <TextBox x:Name="ModelBox" Padding="6" Margin="0,0,0,12"/>
+
+            <TextBlock Text="{x:Static res:Strings.MaxTokensLabel}" Margin="0,0,0,4"/>
+            <TextBox x:Name="MaxTokensBox" Padding="6" Margin="0,0,0,12"/>
+
+            <TextBlock Text="{x:Static res:Strings.ResponseLanguageLabel}" Margin="0,0,0,4"/>
+            <ComboBox x:Name="LanguageBox" Padding="6" Margin="0,0,0,12">
+                <ComboBoxItem Content="{x:Static res:Strings.LanguageAuto}" Tag="auto"/>
+                <ComboBoxItem Content="{x:Static res:Strings.LanguageEnglish}" Tag="en"/>
+                <ComboBoxItem Content="{x:Static res:Strings.LanguageJapanese}" Tag="ja"/>
+            </ComboBox>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right">
+            <Button Content="{x:Static res:Strings.CancelButton}"
+                    Width="90"
+                    Padding="6"
+                    Margin="0,0,8,0"
+                    Click="OnCancelClick"/>
+            <Button Content="{x:Static res:Strings.SaveButton}"
+                    Width="90"
+                    Padding="6"
+                    Click="OnSaveClick"/>
+        </StackPanel>
+    </Grid>
+</Window>

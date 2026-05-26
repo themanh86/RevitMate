@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AppName" xml:space="preserve">
+    <value>RevitMate</value>
+  </data>
+  <data name="PanelTitle" xml:space="preserve">
+    <value>RevitMate アシスタント</value>
+  </data>
+  <data name="SettingsTitle" xml:space="preserve">
+    <value>RevitMate 設定</value>
+  </data>
+  <data name="RibbonTabName" xml:space="preserve">
+    <value>RevitMate</value>
+  </data>
+  <data name="RibbonPanelName" xml:space="preserve">
+    <value>AI ツール</value>
+  </data>
+  <data name="OpenButtonText" xml:space="preserve">
+    <value>RevitMate を開く</value>
+  </data>
+  <data name="SettingsButtonText" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="InputPlaceholder" xml:space="preserve">
+    <value>コマンドまたは質問を入力...</value>
+  </data>
+  <data name="SendButton" xml:space="preserve">
+    <value>送信</value>
+  </data>
+  <data name="NewConversationButton" xml:space="preserve">
+    <value>新しい会話</value>
+  </data>
+  <data name="CopyButton" xml:space="preserve">
+    <value>コピー</value>
+  </data>
+  <data name="ExecutingPrefix" xml:space="preserve">
+    <value>実行中:</value>
+  </data>
+  <data name="TokenUsageLabel" xml:space="preserve">
+    <value>使用トークン数:</value>
+  </data>
+  <data name="Suggestion1" xml:space="preserve">
+    <value>選択中の部屋にダウンライトのグリッドを作成</value>
+  </data>
+  <data name="Suggestion2" xml:space="preserve">
+    <value>回路 DB-L1 の負荷を確認</value>
+  </data>
+  <data name="Suggestion3" xml:space="preserve">
+    <value>この階の照明スケジュールを作成</value>
+  </data>
+  <data name="ApiKeyLabel" xml:space="preserve">
+    <value>Claude API キー</value>
+  </data>
+  <data name="ModelLabel" xml:space="preserve">
+    <value>モデル</value>
+  </data>
+  <data name="MaxTokensLabel" xml:space="preserve">
+    <value>最大応答トークン数</value>
+  </data>
+  <data name="ResponseLanguageLabel" xml:space="preserve">
+    <value>AI 応答言語</value>
+  </data>
+  <data name="LanguageAuto" xml:space="preserve">
+    <value>入力から自動判定</value>
+  </data>
+  <data name="LanguageEnglish" xml:space="preserve">
+    <value>英語</value>
+  </data>
+  <data name="LanguageJapanese" xml:space="preserve">
+    <value>日本語</value>
+  </data>
+  <data name="SaveButton" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="CancelButton" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
+  <data name="ErrorInvalidApiKey" xml:space="preserve">
+    <value>API キーが無効です。設定で更新してください。</value>
+  </data>
+  <data name="ErrorNoActiveDocument" xml:space="preserve">
+    <value>まず Revit プロジェクトを開いてください。</value>
+  </data>
+  <data name="ErrorNetworkFailure" xml:space="preserve">
+    <value>ネットワークエラーです。インターネット接続を確認してください。</value>
+  </data>
+  <data name="ErrorGeneric" xml:space="preserve">
+    <value>エラーが発生しました: {0}</value>
+  </data>
+  <data name="StatusReady" xml:space="preserve">
+    <value>準備完了</value>
+  </data>
+  <data name="StatusThinking" xml:space="preserve">
+    <value>考え中...</value>
+  </data>
+  <data name="StatusExecuting" xml:space="preserve">
+    <value>ツール実行中...</value>
+  </data>
+  <!-- Selection snapshot -->
+  <data name="SelectionStatus" xml:space="preserve">
+    <value>{0} 個の要素が選択されています</value>
+  </data>
+</root>

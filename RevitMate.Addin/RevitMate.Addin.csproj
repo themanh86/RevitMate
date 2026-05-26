@@ -1,0 +1,82 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <RootNamespace>RevitMate.Addin</RootNamespace>
+    <AssemblyName>RevitMate.Addin</AssemblyName>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <PlatformTarget>x64</PlatformTarget>
+
+    <!-- Revit loads dependencies relative to the add-in folder, so copy
+         NuGet/project assets into the build output. -->
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+
+    <!-- Revit's own DLLs reference each other with mismatched versions;
+         MSB3277 from the Revit reference chain is expected and harmless. -->
+    <MSBuildWarningsAsMessages>MSB3277</MSBuildWarningsAsMessages>
+
+    <AssemblyTitle>RevitMate.Addin</AssemblyTitle>
+    <Description>Revit 2026 add-in providing natural-language MEP electrical commands powered by Claude.</Description>
+    <Product>RevitMate</Product>
+    <Company></Company>
+    <Copyright>Copyright (c) 2026</Copyright>
+    <Version>0.1.0</Version>
+    <AssemblyVersion>0.1.0.0</AssemblyVersion>
+    <FileVersion>0.1.0.0</FileVersion>
+
+    <RevitInstallDir>C:\Program Files\Autodesk\Revit 2026\</RevitInstallDir>
+    <RevitAddinsDir>$(ProgramData)\Autodesk\Revit\Addins\2026\</RevitAddinsDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="RevitAPI">
+      <HintPath>$(RevitInstallDir)RevitAPI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="RevitAPIUI">
+      <HintPath>$(RevitInstallDir)RevitAPIUI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Security.Cryptography.ProtectedData" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RevitMate.Core\RevitMate.Core.csproj" />
+    <ProjectReference Include="..\RevitMate.Resources\RevitMate.Resources.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Ribbon icons are embedded in the assembly and loaded via pack:// URIs. -->
+    <Resource Include="Resources\Icons\RevitMate_16.png" />
+    <Resource Include="Resources\Icons\RevitMate_32.png" />
+    <Resource Include="Resources\Icons\RevitMate_64.png" />
+    <Resource Include="Resources\Icons\RevitMateSettings_16.png" />
+    <Resource Include="Resources\Icons\RevitMateSettings_32.png" />
+    <Resource Include="Resources\Icons\RevitMateSettings_64.png" />
+    <!-- Keep the manifest in the build output so the post-build step can copy it. -->
+    <None Include="RevitMate.addin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <Target Name="DeployToRevit" AfterTargets="Build" Condition=" '$(RevitAddinsDir)' != '' AND Exists('$(RevitAddinsDir)') ">
+    <ItemGroup>
+      <_RevitMateDeployFiles Include="$(TargetDir)**\*.dll" />
+      <_RevitMateDeployFiles Include="$(TargetDir)**\*.pdb" />
+      <_RevitMateDeployFiles Include="$(TargetDir)RevitMate.addin" />
+    </ItemGroup>
+    <Copy SourceFiles="@(_RevitMateDeployFiles)"
+          DestinationFiles="@(_RevitMateDeployFiles->'$(RevitAddinsDir)RevitMate\%(RecursiveDir)%(Filename)%(Extension)')"
+          SkipUnchangedFiles="true" />
+    <Copy SourceFiles="$(TargetDir)RevitMate.addin"
+          DestinationFolder="$(RevitAddinsDir)"
+          SkipUnchangedFiles="true" />
+  </Target>
+
+</Project>

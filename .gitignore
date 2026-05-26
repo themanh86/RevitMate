@@ -1,0 +1,87 @@
+# Visual Studio user-specific files
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+*.userprefs
+
+# Build output
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+build/
+bld/
+[Ll]og/
+[Ll]ogs/
+
+# Visual Studio cache / state
+.vs/
+*.opendb
+*.VC.db
+*.VC.VC.opendb
+*.psess
+*.vsp
+*.vspx
+*.sap
+*.vssscc
+*.vspscc
+
+# Rider / ReSharper
+.idea/
+*.sln.iml
+_ReSharper*/
+*.[Rr]e[Ss]harper
+
+# NuGet
+packages/
+*.nupkg
+*.snupkg
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Test results
+TestResult.xml
+nunit-*.xml
+[Tt]est[Rr]esult*/
+
+# Misc tooling
+*.cache
+*.tlog
+*.pidb
+*.svclog
+*.scc
+*.tmp
+*.log
+
+# Secrets and per-developer config — DO NOT COMMIT
+appsettings.json
+*.secret.json
+*.local.json
+.env
+.env.*
+
+# Revit model files (binary, large — not part of source code)
+*.rvt
+*.rte
+*.rfa
+*.0001
+*.0002
+*.0003
+*.0004
+*.0005
+
+# Deliverable media / presentation binaries — committed separately or shared via cloud
+*.mp4
+*.pptx
+*.ppt
+*.xlsx
+*.xls
