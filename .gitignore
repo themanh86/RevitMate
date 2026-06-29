@@ -85,3 +85,6 @@ appsettings.json
 *.ppt
 *.xlsx
 *.xls
+
+# Demo / presentation assets — kept local, not in the source repo
+Deliverable/demo/
