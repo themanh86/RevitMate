@@ -52,7 +52,7 @@ RevitMate は Autodesk Revit 2026 向けアドインです。MEP 電気設計者
 ### ビルド
 
 ```powershell
-git clone <リポジトリURL>
+git clone https://github.com/themanh86/RevitMate.git
 cd RevitMate
 dotnet restore RevitMate.sln
 dotnet build RevitMate.sln -c Release

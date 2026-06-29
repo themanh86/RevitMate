@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RevitMate — 機能概要</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    font-family: "Yu Gothic", "YuGothic", "Hiragino Kaku Gothic ProN",
+                 "Meiryo", "Segoe UI", system-ui, sans-serif;
+    background: radial-gradient(circle at 25% 12%, #0d3b3a 0%, #08201f 48%, #050d0d 100%);
+    color: #f2f5f5;
+    height: 100%;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  .slide {
+    height: 100%;
+    display: flex; flex-direction: column;
+    padding: clamp(28px, 4vh, 60px) clamp(40px, 6vw, 110px);
+    gap: clamp(16px, 2.4vh, 34px);
+  }
+
+  /* Header */
+  .head { display: flex; align-items: baseline; gap: 20px; flex-wrap: wrap; }
+  .brand {
+    display: flex; align-items: center; gap: 14px;
+    font-size: clamp(32px, 4.2vw, 60px); font-weight: 800; letter-spacing: 1px;
+  }
+  .brand .dot {
+    width: clamp(14px,1.4vw,20px); height: clamp(14px,1.4vw,20px); border-radius: 50%;
+    background: #2dd4bf; box-shadow: 0 0 16px #2dd4bf;
+  }
+  .tagline { font-size: clamp(15px, 1.7vw, 24px); color: #b9d4d1; font-weight: 400; }
+
+  .section-label {
+    font-size: clamp(13px, 1.4vw, 18px); letter-spacing: 4px;
+    color: #2dd4bf; font-weight: 700; text-transform: uppercase;
+    display: flex; align-items: center; gap: 14px; margin-bottom: clamp(8px,1.2vh,16px);
+  }
+  .section-label::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg,#2dd4bf55,transparent); }
+
+  /* Trust layer cards (highlight) */
+  .update { flex: 1; display: flex; flex-direction: column; }
+  .cards {
+    flex: 1;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: clamp(12px, 1.4vw, 22px);
+  }
+  .card {
+    background: linear-gradient(160deg, #103e3c 0%, #0a2625 100%);
+    border: 1px solid #1f5b58; border-radius: 16px;
+    padding: clamp(16px, 1.8vw, 28px);
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .card .num {
+    width: clamp(34px,2.6vw,46px); height: clamp(34px,2.6vw,46px);
+    border-radius: 50%; background: #2dd4bf; color: #06201e;
+    font-weight: 800; font-size: clamp(17px,1.5vw,24px);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 0 14px #2dd4bf66;
+  }
+  .card h3 { font-size: clamp(18px, 1.8vw, 28px); font-weight: 800; line-height: 1.25; }
+  .card p { font-size: clamp(13px, 1.25vw, 18px); color: #aecbc8; line-height: 1.6; }
+
+  /* Core features */
+  .features { display: flex; flex-wrap: wrap; gap: clamp(8px,0.9vw,14px); }
+  .feat {
+    font-size: clamp(13px, 1.25vw, 19px); font-weight: 600; color: #d6f5f1;
+    background: #0e2b2a; border: 1px solid #235e5b;
+    padding: 8px 18px; border-radius: 999px;
+  }
+  .feat span { color: #2dd4bf; margin-right: 8px; }
+
+  /* Footer before/after */
+  .footer {
+    display: flex; align-items: center; gap: clamp(12px,1.5vw,26px);
+    font-size: clamp(13px, 1.35vw, 21px);
+    background: #0a1f1e; border: 1px solid #1c4a48; border-radius: 14px;
+    padding: clamp(12px,1.6vh,20px) clamp(18px,2vw,30px);
+  }
+  .footer .before { color: #8aa6a4; }
+  .footer .arrow { color: #2dd4bf; font-size: 1.5em; font-weight: 800; }
+  .footer .after { color: #eafaf8; font-weight: 700; }
+  .footer .after b { color: #5fe3d2; }
+</style>
+</head>
+<body>
+  <div class="slide">
+
+    <!-- Header -->
+    <div class="head">
+      <div class="brand"><span class="dot"></span>RevitMate</div>
+      <div class="tagline">自然言語で指示するだけで Revit を操作する AI アシスタント</div>
+    </div>
+
+    <!-- Update: Trust Layer (highlight) -->
+    <div class="update">
+      <div class="section-label">今回のアップデート ｜ 信頼性レイヤー</div>
+      <div class="cards">
+        <div class="card">
+          <div class="num">1</div>
+          <h3>プレビューと事前確認</h3>
+          <p>モデルを変更する操作は、実行前に必ず内容を表示。「キャンセル」を押せば一切変更されません。</p>
+        </div>
+        <div class="card">
+          <div class="num">2</div>
+          <h3>計画の提示と承認</h3>
+          <p>複数の手順を一つの計画にまとめて提示。利用者が承認して初めて実行します。</p>
+        </div>
+        <div class="card">
+          <div class="num">3</div>
+          <h3>ワンステップ Undo</h3>
+          <p>承認された計画はひとまとまり。Ctrl+Z 一度で計画全体を元に戻せます。</p>
+        </div>
+        <div class="card">
+          <div class="num">4</div>
+          <h3>監査ログ</h3>
+          <p>すべての操作を日時付きで記録。CSV 出力に対応し、90 日で自動削除されます。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Core features -->
+    <div>
+      <div class="section-label">基本機能</div>
+      <div class="features">
+        <div class="feat"><span>▸</span>照明器具の配置</div>
+        <div class="feat"><span>▸</span>パラメータの一括設定</div>
+        <div class="feat"><span>▸</span>回路への接続</div>
+        <div class="feat"><span>▸</span>回路・部屋・要素の情報照会</div>
+        <div class="feat"><span>▸</span>自然言語対応（日本語／英語）</div>
+      </div>
+    </div>
+
+    <!-- Before / After -->
+    <div class="footer">
+      <div class="before">従来：AI がそのままモデルを変更</div>
+      <div class="arrow">→</div>
+      <div class="after">今回：<b>プレビュー → 承認 → ワンステップ Undo → 監査ログ</b> で「安全・透明」に</div>
+    </div>
+
+  </div>
+</body>
+</html>

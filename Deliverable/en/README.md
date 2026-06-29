@@ -52,7 +52,7 @@ RevitMate is an Autodesk Revit 2026 add-in that lets MEP electrical designers is
 ### Build
 
 ```powershell
-git clone <repo-url>
+git clone https://github.com/themanh86/RevitMate.git
 cd RevitMate
 dotnet restore RevitMate.sln
 dotnet build RevitMate.sln -c Release

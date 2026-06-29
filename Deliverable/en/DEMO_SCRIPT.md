@@ -169,9 +169,9 @@ Is circuit 3 on LP-1 overloaded?
 
 > "RevitMate shows that the Anthropic tool-use API maps naturally onto a host application's command set. With seven tools and a well-crafted system prompt, complex multi-step MEP workflows become conversational."
 
-> "The source code is available at [GitHub link]. Thank you for watching."
+> "The source code is available at https://github.com/themanh86/RevitMate/tree/master — thank you for watching."
 
-**[Fade to title card: RevitMate · github.com/… · Powered by Claude]**
+**[Fade to title card: RevitMate · github.com/themanh86/RevitMate · Powered by Claude]**
 
 ---
 

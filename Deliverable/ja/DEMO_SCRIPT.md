@@ -169,9 +169,9 @@ Is circuit 3 on LP-1 overloaded?
 
 > 「RevitMate は、Anthropic のツールユース API がホストアプリケーションのコマンドセットに自然にマッピングできることを示しています。7 つのツールと丁寧に設計されたシステムプロンプトだけで、複雑なマルチステップの MEP ワークフローが会話形式で実現できます。」
 
-> 「ソースコードは [GitHub リンク] で公開しています。ご視聴ありがとうございました。」
+> 「ソースコードは https://github.com/themanh86/RevitMate/tree/master で公開しています。ご視聴ありがとうございました。」
 
-**[タイトルカードにフェードアウト: RevitMate · github.com/… · Powered by Claude]**
+**[タイトルカードにフェードアウト: RevitMate · github.com/themanh86/RevitMate · Powered by Claude]**
 
 ---
 

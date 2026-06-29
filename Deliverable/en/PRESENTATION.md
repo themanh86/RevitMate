@@ -10,7 +10,7 @@
 
 - Presented by: Manh Nguyen
 - Autodesk Revit 2026 Add-in · Claude API · .NET 8
-- [GitHub repository link]
+- https://github.com/themanh86/RevitMate/tree/master
 
 ---
 
@@ -193,7 +193,7 @@ Claude calls: get_room_info → create_light_fixture (×12)
 **RevitMate**
 *Natural language MEP design, powered by Claude*
 
-- GitHub: [repository link]
+- GitHub: https://github.com/themanh86/RevitMate/tree/master
 - Contact: manh.nguyen@arentvn.com
 
 *Thank you for your time.*
