@@ -10,6 +10,7 @@ namespace RevitMate.Core.Tools
         {
             return new List<Tool>
             {
+                ProposePlan(),
                 GetSelectedElements(),
                 GetActiveViewInfo(),
                 GetRoomInfo(),
@@ -17,6 +18,49 @@ namespace RevitMate.Core.Tools
                 SetParameter(),
                 ConnectToCircuit(),
                 GetCircuitInfo(),
+            };
+        }
+
+        private static Tool ProposePlan()
+        {
+            return new Tool
+            {
+                Name = "propose_plan",
+                Description =
+                    "Presents a plan to the user for confirmation BEFORE any model change is made. " +
+                    "You MUST call this first whenever the request will modify the model " +
+                    "(create_light_fixture, set_parameter, connect_to_circuit). Provide a short summary " +
+                    "and an ordered list of the concrete steps you will take. Calling this tool does not " +
+                    "change anything; it only asks the user to approve. Only after the user approves may " +
+                    "you call the modifying tools. Read-only query tools never require a plan.",
+                InputSchema = JObject.Parse(@"{
+                    ""type"": ""object"",
+                    ""properties"": {
+                        ""summary"": {
+                            ""type"": ""string"",
+                            ""description"": ""One concise sentence describing the overall change.""
+                        },
+                        ""steps"": {
+                            ""type"": ""array"",
+                            ""description"": ""Ordered list of concrete steps the plan will perform."",
+                            ""items"": {
+                                ""type"": ""object"",
+                                ""properties"": {
+                                    ""action"": {
+                                        ""type"": ""string"",
+                                        ""description"": ""Short label for the step, e.g. \""Create fixtures\"".""
+                                    },
+                                    ""detail"": {
+                                        ""type"": ""string"",
+                                        ""description"": ""Exactly what this step will change in the model.""
+                                    }
+                                },
+                                ""required"": [""detail""]
+                            }
+                        }
+                    },
+                    ""required"": [""summary"", ""steps""]
+                }"),
             };
         }
 

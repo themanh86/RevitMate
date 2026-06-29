@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Text;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.Electrical;
 using Newtonsoft.Json.Linq;
@@ -9,9 +10,29 @@ using Newtonsoft.Json.Linq;
 
 namespace RevitMate.Addin.Executor.Commands
 {
-    public sealed class ConnectToCircuitCommand : ICommandHandler
+    public sealed class ConnectToCircuitCommand : ICommandHandler, IPreviewable
     {
         public bool IsReadOnly => false;
+
+        public string Preview(Document doc, JObject input)
+        {
+            List<long> elementIds = input["element_ids"]?.Values<long>()?.ToList();
+            string panelName      = input["panel_name"]?.Value<string>();
+            int circuitNumber     = input["circuit_number"]?.Value<int>() ?? 0;
+            int count = elementIds?.Count ?? 0;
+
+            var sb = new StringBuilder();
+            sb.Append($"Connect {count} element(s) to circuit {circuitNumber} on panel '{panelName}'.");
+
+            // Read-only lookup so the user sees the current load before confirming.
+            ElectricalSystem circuit = FindCircuit(doc, panelName, circuitNumber);
+            if (circuit == null)
+                sb.Append($"\nWARNING: Circuit {circuitNumber} on panel '{panelName}' was not found.");
+            else
+                sb.Append($"\nCurrent circuit load: {circuit.ApparentLoad:0} VA.");
+
+            return sb.ToString();
+        }
 
         public string Execute(Document doc, JObject input)
         {

@@ -53,16 +53,44 @@ namespace RevitMate.Addin.Executor
 
         /// <summary>
         /// Schedules <paramref name="toolName"/> for execution on the Revit UI thread
-        /// and asynchronously returns the JSON result string.
+        /// and asynchronously returns the JSON result string. Mutating tools run
+        /// inside a named <see cref="Transaction"/> for single-step undo.
         /// </summary>
-        public async Task<string> ExecuteAsync(string toolName, JObject input)
+        public Task<string> ExecuteAsync(string toolName, JObject input)
+            => RunAsync(toolName, input, ToolCallMode.Execute);
+
+        /// <summary>
+        /// Schedules a read-only preview of <paramref name="toolName"/> on the Revit
+        /// UI thread and asynchronously returns a human-readable description of the
+        /// change it would make, without modifying the model.
+        /// </summary>
+        public Task<string> PreviewAsync(string toolName, JObject input)
+            => RunAsync(toolName, input, ToolCallMode.Preview);
+
+        /// <summary>
+        /// Opens an undo group on the Revit UI thread. Mutating tools executed
+        /// afterwards nest inside it until <see cref="EndPlanAsync"/> assimilates
+        /// them into a single undo step. <paramref name="groupName"/> labels the
+        /// resulting entry in the undo stack.
+        /// </summary>
+        public Task<string> BeginPlanAsync(string groupName)
+            => RunAsync(groupName, null, ToolCallMode.BeginGroup);
+
+        /// <summary>
+        /// Assimilates the open undo group so the whole plan is a single Ctrl+Z.
+        /// Safe to call when no group is open.
+        /// </summary>
+        public Task<string> EndPlanAsync()
+            => RunAsync(string.Empty, null, ToolCallMode.CommitGroup);
+
+        private async Task<string> RunAsync(string toolName, JObject input, ToolCallMode mode)
         {
             await _semaphore.WaitAsync().ConfigureAwait(false);
             try
             {
                 var tcs = new TaskCompletionSource<string>(TaskCreationOptions.RunContinuationsAsynchronously);
 
-                _handler.PendingCall = new ToolCall { Name = toolName, Input = input ?? new JObject() };
+                _handler.PendingCall = new ToolCall { Name = toolName, Input = input ?? new JObject(), Mode = mode };
                 _handler.CompletionSource = tcs;
 
                 ExternalEventRequest status = _externalEvent.Raise();

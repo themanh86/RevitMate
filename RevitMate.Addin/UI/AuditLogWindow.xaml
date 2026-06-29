@@ -1,0 +1,103 @@
+<Window x:Class="RevitMate.Addin.UI.AuditLogWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:res="clr-namespace:RevitMate.Resources;assembly=RevitMate.Resources"
+        Title="{x:Static res:Strings.AuditWindowTitle}"
+        Width="780"
+        Height="520"
+        FontFamily="Segoe UI"
+        FontSize="13"
+        WindowStartupLocation="CenterOwner"
+        Background="#F7F7F8">
+    <Grid Margin="14">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Toolbar -->
+        <Grid Grid.Row="0" Margin="0,0,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0"
+                       Text="{x:Static res:Strings.AuditDateLabel}"
+                       VerticalAlignment="Center"
+                       Margin="0,0,6,0"/>
+            <ComboBox Grid.Column="1"
+                      x:Name="FileBox"
+                      Width="150"
+                      DisplayMemberPath="Display"
+                      SelectionChanged="OnFileSelected"/>
+
+            <TextBlock Grid.Column="3"
+                       x:Name="CountText"
+                       VerticalAlignment="Center"
+                       Foreground="#666"
+                       Margin="0,0,12,0"/>
+            <Button Grid.Column="4"
+                    x:Name="ExportButton"
+                    Content="{x:Static res:Strings.AuditExport}"
+                    Padding="10,5"
+                    Margin="0,0,8,0"
+                    Click="OnExportClick"/>
+            <Button Grid.Column="5"
+                    Content="{x:Static res:Strings.AuditOpenFolder}"
+                    Padding="10,5"
+                    Click="OnOpenFolderClick"/>
+        </Grid>
+
+        <!-- Entries -->
+        <DataGrid Grid.Row="1"
+                  x:Name="EntriesGrid"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  HeadersVisibility="Column"
+                  GridLinesVisibility="Horizontal"
+                  RowBackground="White"
+                  AlternatingRowBackground="#F2F2F4"
+                  BorderBrush="#D0D0D5"
+                  BorderThickness="1"
+                  CanUserAddRows="False"
+                  SelectionMode="Single">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="{x:Static res:Strings.AuditColTime}"
+                                    Binding="{Binding Time}"
+                                    Width="80"/>
+                <DataGridTextColumn Header="{x:Static res:Strings.AuditColEvent}"
+                                    Binding="{Binding Event}"
+                                    Width="110"/>
+                <DataGridTextColumn Header="{x:Static res:Strings.AuditColTool}"
+                                    Binding="{Binding Tool}"
+                                    Width="130"/>
+                <DataGridTextColumn Header="{x:Static res:Strings.AuditColStatus}"
+                                    Binding="{Binding Status}"
+                                    Width="90"/>
+                <DataGridTextColumn Header="{x:Static res:Strings.AuditColDetail}"
+                                    Binding="{Binding Detail}"
+                                    Width="*">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="Wrap"/>
+                            <Setter Property="Margin" Value="2"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Retention note -->
+        <TextBlock Grid.Row="2"
+                   x:Name="RetentionText"
+                   Margin="0,10,0,0"
+                   Foreground="#888"
+                   FontSize="11"/>
+    </Grid>
+</Window>

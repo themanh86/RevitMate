@@ -98,13 +98,13 @@
     <value>使用トークン数:</value>
   </data>
   <data name="Suggestion1" xml:space="preserve">
-    <value>選択中の部屋にダウンライトのグリッドを作成</value>
+    <value>選択中の要素の情報を見せて</value>
   </data>
   <data name="Suggestion2" xml:space="preserve">
-    <value>回路 DB-L1 の負荷を確認</value>
+    <value>アクティブビューの情報を教えて</value>
   </data>
   <data name="Suggestion3" xml:space="preserve">
-    <value>この階の照明スケジュールを作成</value>
+    <value>選択中の要素のコメントに「確認済み」を設定</value>
   </data>
   <data name="ApiKeyLabel" xml:space="preserve">
     <value>Claude API キー</value>
@@ -157,5 +157,61 @@
   <!-- Selection snapshot -->
   <data name="SelectionStatus" xml:space="preserve">
     <value>{0} 個の要素が選択されています</value>
+  </data>
+  <!-- Action confirmation (Plan card) -->
+  <data name="PlanCardTitle" xml:space="preserve">
+    <value>この操作はモデルを変更します。実行するには確認してください。</value>
+  </data>
+  <data name="ConfirmButton" xml:space="preserve">
+    <value>実行する</value>
+  </data>
+  <data name="PlanRunning" xml:space="preserve">
+    <value>実行中...</value>
+  </data>
+  <data name="PlanExecuted" xml:space="preserve">
+    <value>完了</value>
+  </data>
+  <data name="PlanFailed" xml:space="preserve">
+    <value>失敗しました</value>
+  </data>
+  <data name="PlanRejected" xml:space="preserve">
+    <value>キャンセルしました</value>
+  </data>
+  <!-- Audit log -->
+  <data name="AuditButtonText" xml:space="preserve">
+    <value>監査ログ</value>
+  </data>
+  <data name="AuditWindowTitle" xml:space="preserve">
+    <value>RevitMate — 監査ログ</value>
+  </data>
+  <data name="AuditOpenFolder" xml:space="preserve">
+    <value>フォルダーを開く</value>
+  </data>
+  <data name="AuditExport" xml:space="preserve">
+    <value>CSVエクスポート</value>
+  </data>
+  <data name="AuditDateLabel" xml:space="preserve">
+    <value>日付:</value>
+  </data>
+  <data name="AuditColTime" xml:space="preserve">
+    <value>時刻</value>
+  </data>
+  <data name="AuditColEvent" xml:space="preserve">
+    <value>イベント</value>
+  </data>
+  <data name="AuditColTool" xml:space="preserve">
+    <value>ツール</value>
+  </data>
+  <data name="AuditColStatus" xml:space="preserve">
+    <value>状態</value>
+  </data>
+  <data name="AuditColDetail" xml:space="preserve">
+    <value>詳細</value>
+  </data>
+  <data name="AuditEntryCount" xml:space="preserve">
+    <value>{0} 件</value>
+  </data>
+  <data name="AuditRetentionNote" xml:space="preserve">
+    <value>{0} 日より古いログは自動的に削除されます。</value>
   </data>
 </root>

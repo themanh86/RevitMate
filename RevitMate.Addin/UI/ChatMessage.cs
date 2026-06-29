@@ -10,7 +10,8 @@ namespace RevitMate.Addin.UI
         User,
         Assistant,
         System,
-        Action
+        Action,
+        Plan
     }
 
     /// <summary>

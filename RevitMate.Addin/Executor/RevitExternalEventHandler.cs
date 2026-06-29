@@ -4,14 +4,24 @@ using System.Threading.Tasks;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using Newtonsoft.Json.Linq;
+using RevitMate.Addin.Audit;
 using RevitMate.Addin.Executor.Commands;
 
 namespace RevitMate.Addin.Executor
 {
+    public enum ToolCallMode
+    {
+        Execute,
+        Preview,
+        BeginGroup,
+        CommitGroup
+    }
+
     public sealed class ToolCall
     {
         public string Name { get; set; }
         public JObject Input { get; set; }
+        public ToolCallMode Mode { get; set; } = ToolCallMode.Execute;
     }
 
     public sealed class RevitExternalEventHandler : IExternalEventHandler
@@ -31,12 +41,18 @@ namespace RevitMate.Addin.Executor
         public ToolCall PendingCall { get; set; }
         public TaskCompletionSource<string> CompletionSource { get; set; }
 
+        // Open TransactionGroup spanning one approved plan so all of its mutations
+        // collapse into a single undo step. Lives across multiple external events
+        // (one per tool) and is assimilated when the plan finishes.
+        private TransactionGroup _activeGroup;
+
         public void Execute(UIApplication app)
         {
             Application.SetRevitApp(app);
 
             string name = PendingCall?.Name ?? string.Empty;
             JObject input = PendingCall?.Input ?? new JObject();
+            ToolCallMode mode = PendingCall?.Mode ?? ToolCallMode.Execute;
             TaskCompletionSource<string> tcs = CompletionSource;
 
             try
@@ -48,9 +64,33 @@ namespace RevitMate.Addin.Executor
                     return;
                 }
 
+                if (mode == ToolCallMode.BeginGroup)
+                {
+                    BeginGroup(doc, name);
+                    tcs?.SetResult(OkResult);
+                    return;
+                }
+
+                if (mode == ToolCallMode.CommitGroup)
+                {
+                    EndGroup(commit: true);
+                    tcs?.SetResult(OkResult);
+                    return;
+                }
+
                 if (!Handlers.TryGetValue(name, out ICommandHandler handler))
                 {
                     tcs?.SetResult(JsonError($"Unknown tool '{name}'."));
+                    return;
+                }
+
+                // Preview mode: describe the pending change read-only, never mutating.
+                if (mode == ToolCallMode.Preview)
+                {
+                    string preview = handler is IPreviewable previewable
+                        ? previewable.Preview(doc, input)
+                        : null;
+                    tcs?.SetResult(string.IsNullOrEmpty(preview) ? name : preview);
                     return;
                 }
 
@@ -61,6 +101,7 @@ namespace RevitMate.Addin.Executor
                 }
                 else
                 {
+                    string status;
                     using (var t = new Transaction(doc, "RevitMate: " + name))
                     {
                         t.Start();
@@ -68,9 +109,15 @@ namespace RevitMate.Addin.Executor
                         {
                             result = handler.Execute(doc, input);
                             if (IsErrorResult(result))
+                            {
                                 t.RollBack();
+                                status = "rolled_back";
+                            }
                             else
+                            {
                                 t.Commit();
+                                status = "committed";
+                            }
                         }
                         catch
                         {
@@ -79,6 +126,8 @@ namespace RevitMate.Addin.Executor
                             throw;
                         }
                     }
+
+                    AuditLogger.RecordMutation(doc.Title, name, input, result, status);
                 }
 
                 tcs?.SetResult(result);
@@ -91,8 +140,53 @@ namespace RevitMate.Addin.Executor
 
         public string GetName() => "RevitMate Executor";
 
+        /// <summary>
+        /// True when the named tool maps to a handler that modifies the model
+        /// (i.e. is not read-only). Unknown tools are treated as non-mutating.
+        /// </summary>
+        public static bool IsMutating(string toolName)
+            => Handlers.TryGetValue(toolName, out ICommandHandler handler) && !handler.IsReadOnly;
+
         internal static string JsonError(string message)
             => new JObject { ["error"] = message }.ToString(Newtonsoft.Json.Formatting.None);
+
+        private const string OkResult = "{\"ok\":true}";
+
+        // Opens a new undo group, discarding any group left over from an aborted
+        // plan so a stale group never swallows unrelated edits.
+        private void BeginGroup(Document doc, string name)
+        {
+            DiscardActiveGroup();
+            string label = string.IsNullOrWhiteSpace(name) ? "RevitMate AI plan" : name;
+            _activeGroup = new TransactionGroup(doc, label);
+            _activeGroup.Start();
+        }
+
+        // Closes the active group: assimilate merges its transactions into a single
+        // undo step; rollback discards them. Always disposes the group.
+        private void EndGroup(bool commit)
+        {
+            if (_activeGroup == null)
+                return;
+
+            try
+            {
+                if (_activeGroup.GetStatus() == TransactionStatus.Started)
+                {
+                    if (commit)
+                        _activeGroup.Assimilate();
+                    else
+                        _activeGroup.RollBack();
+                }
+            }
+            finally
+            {
+                _activeGroup.Dispose();
+                _activeGroup = null;
+            }
+        }
+
+        private void DiscardActiveGroup() => EndGroup(commit: false);
 
         private static bool IsErrorResult(string json)
         {

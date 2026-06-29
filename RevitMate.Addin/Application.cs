@@ -63,6 +63,7 @@ namespace RevitMate.Addin
             {
                 LocalizationManager.LoadFromConfig();
                 RevitCommandDispatcher.Initialize();
+                Audit.AuditLogger.PurgeOldLogs();
 
                 string apiKey = LoadApiKey();
                 if (string.IsNullOrWhiteSpace(apiKey))
@@ -130,8 +131,20 @@ namespace RevitMate.Addin
                 Image = LoadEmbeddedImage("Resources/Icons/RevitMateSettings_16.png")
             };
 
+            var auditButtonData = new PushButtonData(
+                "OpenAuditLog",
+                Strings.AuditButtonText,
+                assemblyPath,
+                typeof(OpenAuditLogCommand).FullName)
+            {
+                ToolTip = Strings.AuditWindowTitle,
+                LargeImage = LoadEmbeddedImage("Resources/Icons/RevitMate_32.png"),
+                Image = LoadEmbeddedImage("Resources/Icons/RevitMate_16.png")
+            };
+
             panel.AddItem(openButtonData);
             panel.AddItem(settingsButtonData);
+            panel.AddItem(auditButtonData);
         }
 
         private static void RegisterDockablePane(UIControlledApplication application, MainPaneProvider provider)

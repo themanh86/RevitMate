@@ -7,9 +7,20 @@ using Newtonsoft.Json.Linq;
 
 namespace RevitMate.Addin.Executor.Commands
 {
-    public sealed class SetParameterCommand : ICommandHandler
+    public sealed class SetParameterCommand : ICommandHandler, IPreviewable
     {
         public bool IsReadOnly => false;
+
+        public string Preview(Document doc, JObject input)
+        {
+            List<long> elementIds = input["element_ids"]?.Values<long>()?.ToList();
+            string paramName      = input["parameter_name"]?.Value<string>();
+            JToken valueToken     = input["value"];
+
+            int count = elementIds?.Count ?? 0;
+            string value = valueToken?.ToString() ?? string.Empty;
+            return $"Set parameter '{paramName}' = '{value}' on {count} element(s).";
+        }
 
         public string Execute(Document doc, JObject input)
         {

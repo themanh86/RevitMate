@@ -352,5 +352,167 @@ namespace RevitMate.Resources {
                 return ResourceManager.GetString("SelectionStatus", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to This action will change your model. Confirm to proceed.
+        /// </summary>
+        public static string PlanCardTitle {
+            get {
+                return ResourceManager.GetString("PlanCardTitle", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm.
+        /// </summary>
+        public static string ConfirmButton {
+            get {
+                return ResourceManager.GetString("ConfirmButton", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Running....
+        /// </summary>
+        public static string PlanRunning {
+            get {
+                return ResourceManager.GetString("PlanRunning", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Done.
+        /// </summary>
+        public static string PlanExecuted {
+            get {
+                return ResourceManager.GetString("PlanExecuted", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Failed.
+        /// </summary>
+        public static string PlanFailed {
+            get {
+                return ResourceManager.GetString("PlanFailed", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Cancelled.
+        /// </summary>
+        public static string PlanRejected {
+            get {
+                return ResourceManager.GetString("PlanRejected", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Audit Log.
+        /// </summary>
+        public static string AuditButtonText {
+            get {
+                return ResourceManager.GetString("AuditButtonText", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to RevitMate — Audit Log.
+        /// </summary>
+        public static string AuditWindowTitle {
+            get {
+                return ResourceManager.GetString("AuditWindowTitle", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Open folder.
+        /// </summary>
+        public static string AuditOpenFolder {
+            get {
+                return ResourceManager.GetString("AuditOpenFolder", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Export CSV.
+        /// </summary>
+        public static string AuditExport {
+            get {
+                return ResourceManager.GetString("AuditExport", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Date:.
+        /// </summary>
+        public static string AuditDateLabel {
+            get {
+                return ResourceManager.GetString("AuditDateLabel", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Time.
+        /// </summary>
+        public static string AuditColTime {
+            get {
+                return ResourceManager.GetString("AuditColTime", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Event.
+        /// </summary>
+        public static string AuditColEvent {
+            get {
+                return ResourceManager.GetString("AuditColEvent", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Tool.
+        /// </summary>
+        public static string AuditColTool {
+            get {
+                return ResourceManager.GetString("AuditColTool", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Status.
+        /// </summary>
+        public static string AuditColStatus {
+            get {
+                return ResourceManager.GetString("AuditColStatus", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Detail.
+        /// </summary>
+        public static string AuditColDetail {
+            get {
+                return ResourceManager.GetString("AuditColDetail", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to {0} entries.
+        /// </summary>
+        public static string AuditEntryCount {
+            get {
+                return ResourceManager.GetString("AuditEntryCount", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Logs older than {0} days are removed automatically.
+        /// </summary>
+        public static string AuditRetentionNote {
+            get {
+                return ResourceManager.GetString("AuditRetentionNote", resourceCulture);
+            }
+        }
     }
 }

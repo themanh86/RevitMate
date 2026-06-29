@@ -102,13 +102,13 @@
   </data>
   <!-- Suggestions -->
   <data name="Suggestion1" xml:space="preserve">
-    <value>Create a downlight grid in the selected room</value>
+    <value>Show information for the selected element</value>
   </data>
   <data name="Suggestion2" xml:space="preserve">
-    <value>Check circuit DB-L1 load</value>
+    <value>Show information about the active view</value>
   </data>
   <data name="Suggestion3" xml:space="preserve">
-    <value>Generate lighting schedule for this level</value>
+    <value>Set the selected element's comment to "Checked"</value>
   </data>
   <!-- Settings dialog -->
   <data name="ApiKeyLabel" xml:space="preserve">
@@ -164,5 +164,61 @@
   <!-- Selection snapshot -->
   <data name="SelectionStatus" xml:space="preserve">
     <value>{0} element(s) selected</value>
+  </data>
+  <!-- Action confirmation (Plan card) -->
+  <data name="PlanCardTitle" xml:space="preserve">
+    <value>This action will change your model. Confirm to proceed.</value>
+  </data>
+  <data name="ConfirmButton" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="PlanRunning" xml:space="preserve">
+    <value>Running...</value>
+  </data>
+  <data name="PlanExecuted" xml:space="preserve">
+    <value>Done</value>
+  </data>
+  <data name="PlanFailed" xml:space="preserve">
+    <value>Failed</value>
+  </data>
+  <data name="PlanRejected" xml:space="preserve">
+    <value>Cancelled</value>
+  </data>
+  <!-- Audit log -->
+  <data name="AuditButtonText" xml:space="preserve">
+    <value>Audit Log</value>
+  </data>
+  <data name="AuditWindowTitle" xml:space="preserve">
+    <value>RevitMate — Audit Log</value>
+  </data>
+  <data name="AuditOpenFolder" xml:space="preserve">
+    <value>Open folder</value>
+  </data>
+  <data name="AuditExport" xml:space="preserve">
+    <value>Export CSV</value>
+  </data>
+  <data name="AuditDateLabel" xml:space="preserve">
+    <value>Date:</value>
+  </data>
+  <data name="AuditColTime" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="AuditColEvent" xml:space="preserve">
+    <value>Event</value>
+  </data>
+  <data name="AuditColTool" xml:space="preserve">
+    <value>Tool</value>
+  </data>
+  <data name="AuditColStatus" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="AuditColDetail" xml:space="preserve">
+    <value>Detail</value>
+  </data>
+  <data name="AuditEntryCount" xml:space="preserve">
+    <value>{0} entries</value>
+  </data>
+  <data name="AuditRetentionNote" xml:space="preserve">
+    <value>Logs older than {0} days are removed automatically.</value>
   </data>
 </root>
